@@ -7,7 +7,7 @@ import './overwrites.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
-const title = 'Expense.fyi – Track your expenses with ease';
+const title = 'FinVision – Track your expenses';
 const description = 'Effortlessly Track and Manage Expenses.';
 
 const GOOGLE_ANALYTICS_ID = process.env.GA4_ANALYTICS_ID;
@@ -15,30 +15,30 @@ const GOOGLE_ANALYTICS_ID = process.env.GA4_ANALYTICS_ID;
 export const metadata = {
 	title,
 	description,
-	manifest: 'https://expense.fyi/manifest.json',
+	manifest: '/manifest.json',
 	twitter: {
 		card: 'summary_large_image',
 		title,
 		description,
-		creator: '@gokul_i',
-		images: ['https://expense.fyi/og.jpg'],
+		creator: '@BinaryBrains', // Updated to BinaryBrains
+		// images: ['/og.jpg'], // Using relative path
 	},
 	openGraph: {
 		title,
 		description,
-		url: 'https://expense.fyi',
+		url: 'https://your-domain.com', // Update with your actual domain
 		type: 'website',
-		images: ['https://expense.fyi/og.jpg'],
+		// images: ['/og.jpg'], // Using relative path
 	},
 	icons: {
-		icon: 'https://expense.fyi/icons/icon.svg',
-		shortcut: 'https://expense.fyi/favicon.ico',
-		apple: 'https://expense.fyi/icons/apple-icon.png',
+		icon: '/icons/logo.svg', // Using your SVG logo
+		shortcut: '/icons/logo.png', // Using your PNG logo as shortcut
+		apple: '/icons/logo.png', // Using your PNG logo for Apple
 	},
 	appleWebApp: {
 		title,
 		statusBarStyle: 'black',
-		startupImage: ['https://expense.fyi/icons/apple-icon.png'],
+		startupImage: ['/icons/logo.png'], // Using your PNG logo
 	},
 };
 
@@ -58,12 +58,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 			<Script src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`} strategy="afterInteractive" />
 			<Script id="ga4" strategy="afterInteractive">
 				{`
-						window.dataLayer = window.dataLayer || [];
-						function gtag(){dataLayer.push(arguments);}
-						gtag('js', new Date());
-
-						gtag('config', '${GOOGLE_ANALYTICS_ID}');
-					`}
+					window.dataLayer = window.dataLayer || [];
+					function gtag(){dataLayer.push(arguments);}
+					gtag('js', new Date());
+					gtag('config', '${GOOGLE_ANALYTICS_ID}');
+				`}
 			</Script>
 		</html>
 	);
